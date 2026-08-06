@@ -101,6 +101,8 @@ a { text-decoration: none; }
   margin: 0;
   font-family: var(--font-title);
   font-weight: 900;
+   font-size: clamp(14px, 4vw, 22px); /* Tự động thu nhỏ hơn một chút để không bị đè viền */
+  white-space: nowrap; /* 🔥 Giúp chữ luôn nằm trên 1 dòng, tuyệt đối không rơi chữ */
   color: var(--color-beige);
   text-transform: uppercase;
   letter-spacing: 0.5px;

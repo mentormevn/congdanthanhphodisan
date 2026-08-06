@@ -106,7 +106,7 @@ a { text-decoration: none; }
   color: var(--color-beige);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  line-height: 1.15;
+  line-height: 1.5;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 

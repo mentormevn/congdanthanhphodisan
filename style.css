@@ -98,15 +98,15 @@ a { text-decoration: none; }
 }
 
 .hero__title {
-  margin: 0;
+  margin: 0 auto;
+  text-align: center; /* 👈 Đảm bảo toàn bộ chữ luôn căn giữa */
+  width: 100%;
   font-family: var(--font-title);
   font-weight: 900;
-   font-size: clamp(14px, 4vw, 22px); /* Tự động thu nhỏ hơn một chút để không bị đè viền */
-  white-space: nowrap; /* 🔥 Giúp chữ luôn nằm trên 1 dòng, tuyệt đối không rơi chữ */
   color: var(--color-beige);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  line-height: 1.5;
+  line-height: 1.5; /* Tăng khoảng cách giữa các dòng cho thoáng */
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 

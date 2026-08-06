@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thành phố di sản - Tự hào thanh niên | Tỉnh Đoàn Quảng Ninh</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23b40105%22/><text x=%2250%22 y=%2268%22 font-size=%2260%22 fill=%22%23fff5e9%22 text-anchor=%22middle%22 font-family=%22Arial%22>QN</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ============ KHỐI 1: HERO BANNER ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <img src="anhquangninh.png" alt="Thành phố Quảng Ninh nhìn từ trên cao" class="hero__img">
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">
+        <span class="hero__line hero__line--1">TỰ HÀO CÔNG DÂN</span>
+          <p style="margin-bottom: 20px;"></p>
+        <span class="hero__line hero__line--2">THÀNH PHỐ DI SẢN</span>
+      </h1>
+    
+  </section>
+
+  <!-- ============ KHỐI 2: NỘI DUNG + ẢNH ============ -->
+  <section class="notice" id="notice">
+    <div class="notice__col notice__col--text reveal reveal--left">
+      <p class="notice-text">Nội dung gì đó liên quan đến thông báo</p>
+    </div>
+    <div class="notice__col notice__col--image reveal reveal--right">
+      <div class="notice-frame">
+        <span class="notice-frame__placeholder">ẢNH</span>
+        <!-- Khi có ảnh thật, thay bằng: <img src="assets/anh2.png" alt="Hình ảnh minh họa" class="notice-frame__img"> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KHỐI 3: BỘ NHẬN DIỆN ============ -->
+  <section class="identity" id="identity">
+    <h2 class="identity__header reveal">BỘ NHẬN DIỆN</h2>
+
+    <div class="identity__card reveal">
+      <div class="slider" id="slider">
+        <div class="slider__viewport">
+          <div class="slider__track" id="sliderTrack">
+
+            <div class="slide">
+              <div class="slide__image-wrap">
+                <img src="ava.png" alt="Mẫu khung ảnh đại diện - Tự hào công dân Thành phố di sản" class="slide__img">
+              </div>
+            </div>
+
+             <div class="slide slide--cover">
+               <div class="slide__image-wrap slide__image-wrap--contain">
+                <img src="cover.png" alt="Mẫu ảnh bìa Facebook - Thành phố di sản" class="slide__img slide__img--contain">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <button class="slider__arrow" id="sliderArrow" aria-label="Chuyển ảnh tiếp theo" type="button">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 6l6 6-6 6" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="slider__dots" id="sliderDots">
+          <span class="dot dot--active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+        </div>
+      </div>
+
+      <!-- TODO: điền link "COVER FACEBOOK" khi có -->
+      <a href="https://khunghinh.net/p/f84b2eb5de64e145"
+         class="identity__btn"
+         id="identityBtn"
+         data-link-frame="https://khunghinh.net/p/f84b2eb5de64e145"
+         data-link-cover=""
+         target="_blank" rel="noopener">
+        <span id="identityBtnText">FRAME AVATAR</span>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

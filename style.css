@@ -110,7 +110,7 @@ a { text-decoration: none; }
 
 .hero__line {
   display: block;
-  font-size: clamp(20px, 6vw, 32px);
+  font-size: clamp(16px, 4.5vw, 24px);
   opacity: 0;
   p { margin-bottom: 30px; }
   transform: translateY(24px);

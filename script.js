@@ -37,74 +37,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', updateParallax, { passive: true });
 
-  /* =========================================================
-     3. IDENTITY SLIDER
-     ========================================================= */
+/* =========================================================
+   3. IDENTITY SLIDER (Đã tối ưu mượt mà)
+   ========================================================= */
+const track = document.getElementById('sliderTrack');
+const arrow = document.getElementById('sliderArrow');
+const dots = document.querySelectorAll('#sliderDots .dot');
+const btn = document.getElementById('identityBtn');
+const btnText = document.getElementById('identityBtnText');
 
-  const track = document.getElementById('sliderTrack');
-  const arrow = document.getElementById('sliderArrow');
-  const dots = document.querySelectorAll('#sliderDots .dot');
+const slideLabels = ['FRAME AVATAR', 'COVER FACEBOOK'];
+const slideLinks = [btn?.dataset.linkFrame || '#', btn?.dataset.linkCover || '#'];
 
-  const btn = document.getElementById('identityBtn');
-  const btnText = document.getElementById('identityBtnText');
+let currentIndex = 0;
+const totalSlides = 2;
+let isAnimating = false; // Chống spam click liên tục gây giật
 
-  const slideLabels = [
-    'FRAME AVATAR',
-    'COVER FACEBOOK'
-  ];
+function goToSlide(index) {
+  if (isAnimating) return; // Nếu đang trượt thì bỏ qua click tiếp theo
+  isAnimating = true;
 
-  const slideLinks = [
-    btn.dataset.linkFrame || '#',
-    btn.dataset.linkCover || '#'
-  ];
+  currentIndex = (index + totalSlides) % totalSlides;
 
-  let currentIndex = 0;
-  const totalSlides = 2;
-
-  function goToSlide(index) {
-
-    currentIndex = (index + totalSlides) % totalSlides;
-
+  // 1. Dùng requestAnimationFrame để trượt mượt mà hơn
+  requestAnimationFrame(() => {
     track.style.transform = `translateX(-${currentIndex * 50}%)`;
-
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('dot--active', i === currentIndex);
-    });
-
-    arrow.classList.toggle(
-      'is-prev',
-      currentIndex === totalSlides - 1
-    );
-
-    btn.classList.add('is-fading');
-
-    setTimeout(() => {
-
-      btnText.textContent = slideLabels[currentIndex];
-
-      btn.href = slideLinks[currentIndex] || '#';
-
-      btn.classList.remove('is-fading');
-
-    }, 300);
-
-  }
-
-  arrow.addEventListener('click', () => {
-    goToSlide(currentIndex + 1);
   });
 
-  dots.forEach((dot) => {
-
-    dot.addEventListener('click', () => {
-
-      goToSlide(
-        parseInt(dot.dataset.index, 10)
-      );
-
-    });
-
+  // 2. Cập nhật trạng thái các chấm Dots và Mũi tên
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('dot--active', i === currentIndex);
   });
+  arrow.classList.toggle('is-prev', currentIndex === totalSlides - 1);
+
+  // 3. Fade out nút -> đổi chữ -> Fade in nút
+  btn.classList.add('is-fading');
+  
+  setTimeout(() => {
+    btnText.textContent = slideLabels[currentIndex];
+    btn.href = slideLinks[currentIndex] || '#';
+    btn.classList.remove('is-fading');
+    isAnimating = false; // Mở lại cho phép click tiếp
+  }, 200); // 200ms khớp với thời gian transition opacity trong CSS
+}
+
+arrow.addEventListener('click', () => {
+  goToSlide(currentIndex + 1);
+});
+
+dots.forEach((dot) => {
+  dot.addEventListener('click', () => {
+    goToSlide(parseInt(dot.dataset.index, 10));
+  });
+});
 
   /* =========================================================
      4. SWIPE SUPPORT

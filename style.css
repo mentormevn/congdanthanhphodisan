@@ -1,0 +1,455 @@
+/* ===================================================
+   THÀNH PHỐ DI SẢN - TỰ HÀO THANH NIÊN
+   =================================================== */
+
+:root {
+  --color-red: #b40105;
+  --color-red-dark: #8e0104;
+  --color-beige: #fff5e9;
+  --color-white: #ffffff;
+  --font-title: 'Montserrat', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+  --content-max: 480px;
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-red);
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { text-decoration: none; }
+
+.page {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  background: var(--color-beige);
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+  min-height: 100vh;
+}
+
+/* ===================================================
+   KHỐI 1 — HERO BANNER
+   =================================================== */
+
+.hero {
+  position: relative;
+  min-height: 500px;
+  height: 62vh;
+  max-height: 640px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transform: scale(1.08);
+  animation: heroKenBurns 9s var(--ease-out-expo) forwards;
+  will-change: transform;
+}
+
+@keyframes heroKenBurns {
+  0%   { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(180, 1, 5, 0.15) 0%,
+    rgba(180, 1, 5, 0.55) 55%,
+    rgba(180, 1, 5, 0.92) 100%
+  );
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 24px 56px;
+  text-align: center;
+}
+
+.hero__title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 900;
+  color: var(--color-beige);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.15;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.hero__line {
+  display: block;
+  font-size: clamp(20px, 6vw, 32px);
+  opacity: 0;
+  p { margin-bottom: 30px; }
+  transform: translateY(24px);
+  filter: blur(4px);
+  animation: heroLineIn 0.9s var(--ease-out-expo) forwards;
+}
+
+.hero__line--1 { animation-delay: 0.25s; }
+.hero__line--2 { animation-delay: 0.42s; }
+
+@keyframes heroLineIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ===================================================
+   KHỐI 2 — NỘI DUNG THÔNG BÁO + ẢNH
+   =================================================== */
+
+.notice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+  padding: 40px 20px;
+  background: var(--color-beige);
+}
+
+@media (max-width: 380px) {
+  .notice {
+    grid-template-columns: 1fr;
+  }
+}
+
+.notice__col--text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.notice-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--color-red);
+  font-size: clamp(13px, 3.1vw, 16px);
+  line-height: 1.5;
+  letter-spacing: 0.1px;
+  text-align: center;
+}
+
+.notice__col--image {
+  display: flex;
+}
+
+.notice-frame {
+  position: relative;
+  width: 100%;
+  min-height: 240px;
+  border-radius: 24px;
+  background: linear-gradient(150deg, var(--color-red) 0%, var(--color-red-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(180, 1, 5, 0.22), 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
+}
+
+.notice-frame:hover {
+  transform: scale(1.025) translateY(-2px);
+  box-shadow: 0 18px 34px rgba(180, 1, 5, 0.3), 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.notice-frame__placeholder {
+  font-family: var(--font-title);
+  font-weight: 900;
+  color: var(--color-beige);
+  font-size: clamp(18px, 5vw, 26px);
+  letter-spacing: 1px;
+}
+
+.notice-frame__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===================================================
+   Scroll reveal (shared)
+   =================================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(.22, 1, .36, 1);
+    will-change: transform, opacity;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal--left {
+  transform: translateX(-36px) scale(0.98);
+}
+
+.reveal--right {
+  transform: translateX(36px) scale(0.98);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* ===================================================
+   KHỐI 3 — BỘ NHẬN DIỆN
+   =================================================== */
+
+.identity {
+  background: var(--color-red);
+  padding: 40px 0 56px;
+}
+
+.identity__header {
+  margin: 0 0 28px;
+  text-align: center;
+  font-family: var(--font-title);
+  font-weight: 900;
+  color: var(--color-beige);
+  text-transform: uppercase;
+  font-size: clamp(20px, 5.5vw, 28px);
+}
+
+.identity__card {
+  max-width: 420px;
+  margin: 0 auto;
+  background: var(--color-white);
+  border-radius: 28px;
+  padding: 20px 20px 24px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.3), 0 4px 14px rgba(0, 0, 0, 0.12);
+  transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
+}
+
+.identity__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 26px 56px rgba(0, 0, 0, 0.34), 0 6px 16px rgba(0, 0, 0, 0.14);
+}
+
+/* ---- Slider ---- */
+
+.slider {
+  position: relative;
+}
+
+.slider__viewport {
+    overflow: hidden;
+    border-radius: 20px;
+    height: 420px; /* chỉnh theo chiều cao avatar của bạn */
+}
+
+.slider__track {
+  display: flex;
+  align-items: flex-start;
+  width: 200%;
+  transition: transform 0.75s var(--ease-smooth);
+}
+
+.slide {
+  width: 50%;
+  flex-shrink: 0;
+}
+
+.slide__image-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(150deg, var(--color-red) 0%, var(--color-red-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cover Facebook: giữ nguyên tỉ lệ ảnh, không cắt xén */
+.slide__image-wrap--contain {
+    aspect-ratio: 1.91 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide__img--contain {
+    width: 92%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.slide--cover .slide__image-wrap {
+    width: 95%;          /* Có thể chỉnh 85%-95% */
+    margin: 24px auto;
+}
+.slider__arrow {
+  position: absolute;
+  top: 50%;
+  right: -14px;
+  left: auto;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(150deg, var(--color-red) 0%, var(--color-red-dark) 100%);
+  border: 3px solid var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28), 0 0 0 0 rgba(180, 1, 5, 0.4);
+  transition: right 0.6s var(--ease-out-expo), left 0.6s var(--ease-out-expo),
+              background 0.25s ease, box-shadow 0.3s ease, transform 0.2s var(--ease-spring);
+  padding: 0;
+}
+
+.slider__arrow svg {
+  transition: transform 0.5s var(--ease-out-expo);
+}
+
+.slider__arrow:hover {
+  background: linear-gradient(150deg, var(--color-red-dark) 0%, var(--color-red) 100%);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.32), 0 0 0 6px rgba(180, 1, 5, 0.12);
+}
+
+.slider__arrow:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+/* Ở slide cuối, mũi tên "quay lại" chuyển sang bên trái và đổi hướng */
+.slider__arrow.is-prev {
+  right: auto;
+  left: -14px;
+}
+
+.slider__arrow.is-prev svg {
+  transform: rotate(180deg);
+}
+
+.slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e3c9c9;
+  transition: background 0.4s var(--ease-out-expo), width 0.4s var(--ease-out-expo), transform 0.3s var(--ease-spring);
+  cursor: pointer;
+}
+
+.dot--active {
+  background: var(--color-red);
+  width: 22px;
+  border-radius: 5px;
+  transform: scale(1);
+}
+
+/* ---- Button ---- */
+
+.identity__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  margin-top: 18px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--color-red) 0%, var(--color-red-dark) 100%);
+  color: var(--color-white);
+  font-family: var(--font-title);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  font-size: clamp(13px, 3.6vw, 16px);
+  text-transform: uppercase;
+  transition: transform 0.35s var(--ease-out-expo), box-shadow 0.35s var(--ease-out-expo), opacity 0.3s ease;
+  box-shadow: 0 8px 20px rgba(180, 1, 5, 0.28);
+}
+
+.identity__btn span {
+  transition: opacity 0.3s ease, transform 0.3s var(--ease-out-expo);
+}
+
+.identity__btn.is-fading span {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.identity__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(180, 1, 5, 0.36);
+}
+
+.identity__btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ===================================================
+   Buttons global hover/active (spec 4)
+   =================================================== */
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

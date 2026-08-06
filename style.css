@@ -1,5 +1,5 @@
 /* ===================================================
-   THÀNH PHỐ DI SẢN - TỰ HÀO THANH NIÊN
+   Tự hào công dân thành phố di sản
    =================================================== */
 
 :root {
@@ -207,17 +207,19 @@ a { text-decoration: none; }
    Scroll reveal (shared)
    =================================================== */
 
+/* Trạng thái ban đầu: Ẩn và nằm thấp xuống 30px */
 .reveal {
-    opacity: 0;
-    transform: translateY(16px);
-    transition:
-        opacity 0.9s ease,
-        transform 0.9s cubic-bezier(.22, 1, .36, 1);
-    will-change: transform, opacity;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease-out, transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform; /* Tối ưu hiệu năng */
 }
 
+/* Trạng thái khi xuất hiện: Hiện và về vị trí cũ */
 .reveal.is-visible {
-    opacity: 1;
+  opacity: 1;
+  transform: translateY(0);
+}
     transform: translateY(0);
 }
 
@@ -227,11 +229,6 @@ a { text-decoration: none; }
 
 .reveal--right {
   transform: translateX(36px) scale(0.98);
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translate(0, 0) scale(1);
 }
 
 /* ===================================================

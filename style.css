@@ -99,22 +99,23 @@ a { text-decoration: none; }
 
 .hero__title {
   margin: 0 auto;
-  text-align: center; /* 👈 Đảm bảo toàn bộ chữ luôn căn giữa */
+  text-align: center;
   width: 100%;
   font-family: var(--font-title);
   font-weight: 900;
   color: var(--color-beige);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  line-height: 1.5; /* Tăng khoảng cách giữa các dòng cho thoáng */
+  line-height: 1.35;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 .hero__line {
   display: block;
-  font-size: clamp(16px, 4.5vw, 24px);
+  text-align: center;
+  font-size: clamp(14px, 4vw, 20px); /* 💡 Hạ nhẹ kích thước để chắc chắn vừa mọi màn hình */
+  text-wrap: balance; /* 🔥 Ép CSS tự chia cân bằng chữ trên các dòng, không bao giờ bỏ lẻ 1-2 chữ */
   opacity: 0;
-  p { margin-bottom: 30px; }
   transform: translateY(24px);
   filter: blur(4px);
   animation: heroLineIn 0.9s var(--ease-out-expo) forwards;

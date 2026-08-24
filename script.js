@@ -46,11 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const btn = document.getElementById('identityBtn');
   const btnText = document.getElementById('identityBtnText');
 
-  const slideLabels = ['FRAME AVATAR', 'COVER FACEBOOK', 'KỲ VỌNG VÀ CAM KẾT'];
+  const slideLabels = ['KỲ VỌNG VÀ CAM KẾT', 'FRAME AVATAR', 'COVER FACEBOOK'];
   const slideLinks = [
+    btn?.dataset.linkKyvong || '#',
     btn?.dataset.linkFrame || '#',
-    btn?.dataset.linkCover || '#',
-    btn?.dataset.linkKyvong || '#'
+    btn?.dataset.linkCover || '#'
   ];
 
   let currentIndex = 0;

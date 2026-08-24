@@ -310,17 +310,18 @@ a { text-decoration: none; }
 
 /* Cover Facebook / Kỳ vọng & Cam kết: giữ nguyên tỉ lệ ảnh, không cắt xén */
 .slide__image-wrap--contain {
-  aspect-ratio: 1.91 / 1;
+  aspect-ratio: 1672 / 1882; /* Hoặc 1 / 1 */
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .slide__img--contain {
-  width: 92%;
-  height: auto;
-  max-height: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Giữ nguyên toàn bộ nội dung ảnh */
   display: block;
 }
 

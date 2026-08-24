@@ -324,8 +324,7 @@ a { text-decoration: none; }
   display: block;
 }
 
-.slide--cover .slide__image-wrap,
-.slide--kyvong .slide__image-wrap {
+.slide--cover .slide__image-wrap {
   width: 95%;          /* Có thể chỉnh 85%-95% */
   margin: 24px auto;
 }

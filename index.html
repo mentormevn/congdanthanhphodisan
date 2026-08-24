@@ -16,15 +16,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-  
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23b40105%22/><text x=%2250%22 y=%2268%22 font-size=%2260%22 fill=%22%23fff5e9%22 text-anchor=%22middle%22 font-family=%22Arial%22>QN</text></svg>">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-</head>
 <body>
 
 <div class="page">
@@ -36,14 +27,12 @@
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-  <h1 class="hero__title">
-  <span class="hero__line hero__line--1">CHÀO MỪNG THÀNH LẬP</span>
-
-  <span class="hero__line hero__line--2">THÀNH PHỐ QUẢNG NINH</span>
-
-  <span class="hero__line hero__line--3">TRỰC THUỘC TRUNG ƯƠNG</span>
-</h1>
-    
+      <h1 class="hero__title">
+        <span class="hero__line hero__line--1">CHÀO MỪNG THÀNH LẬP</span>
+        <span class="hero__line hero__line--2">THÀNH PHỐ QUẢNG NINH</span>
+        <span class="hero__line hero__line--3">TRỰC THUỘC TRUNG ƯƠNG</span>
+      </h1>
+    </div>
   </section>
 
   <!-- ============ KHỐI 2: NỘI DUNG + ẢNH ============ -->
@@ -73,9 +62,15 @@
               </div>
             </div>
 
-             <div class="slide slide--cover">
-               <div class="slide__image-wrap slide__image-wrap--contain">
+            <div class="slide slide--cover">
+              <div class="slide__image-wrap slide__image-wrap--contain">
                 <img src="cover1.png" alt="Mẫu ảnh bìa Facebook - Thành phố di sản" class="slide__img slide__img--contain">
+              </div>
+            </div>
+
+            <div class="slide slide--kyvong">
+              <div class="slide__image-wrap slide__image-wrap--contain">
+                <img src="kyvong1.png" alt="Mẫu Kỳ vọng và Cam kết - Thành phố di sản" class="slide__img slide__img--contain">
               </div>
             </div>
 
@@ -91,17 +86,39 @@
         <div class="slider__dots" id="sliderDots">
           <span class="dot dot--active" data-index="0"></span>
           <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
         </div>
       </div>
 
-      <!-- TODO: điền link "COVER FACEBOOK" khi có -->
+      <!-- TODO: điền link thật khi cần đổi -->
       <a href="https://khunghinh.net/p/a7ad8c073e72a04e"
          class="identity__btn"
          id="identityBtn"
          data-link-frame="https://khunghinh.net/p/a7ad8c073e72a04e"
          data-link-cover="https://drive.google.com/drive/folders/15gVFB81KNOopXNfRFROdF5tQsVFPaRDz?usp=sharing"
+         data-link-kyvong="https://khunghinh.net/p/a6858f64f6375e14"
          target="_blank" rel="noopener">
         <span id="identityBtnText">FRAME AVATAR</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ KHỐI 4: MẪU CAPCUT ============ -->
+  <section class="capcut" id="capcut">
+    <h2 class="capcut__header reveal">MẪU CAPCUT</h2>
+
+    <div class="capcut__body reveal">
+      <div class="capcut__frame">
+        <!-- TODO: thay bằng ảnh hoặc video Capcut thật (tỉ lệ 9:16) -->
+        <span class="capcut__placeholder">VIDEO / ẢNH<br>9:16</span>
+        <!-- Nếu dùng video, thay thẻ span ở trên bằng:
+        <video class="capcut__video" src="video-capcut.mp4" autoplay muted loop playsinline></video>
+        -->
+      </div>
+
+      <!-- TODO: điền link Video Capcut thật tại đây -->
+      <a href="#" class="identity__btn capcut__btn" id="capcutBtn" target="_blank" rel="noopener">
+        <span>VIDEO CAPCUT</span>
       </a>
     </div>
   </section>

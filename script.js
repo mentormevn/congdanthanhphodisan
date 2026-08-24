@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, {
-threshold: 0.3, rootMargin: '0px 0px -50px 0px'
+    threshold: 0.3, rootMargin: '0px 0px -50px 0px'
   });
 
   revealEls.forEach((el) => revealObserver.observe(el));
@@ -37,59 +37,63 @@ threshold: 0.3, rootMargin: '0px 0px -50px 0px'
 
   window.addEventListener('scroll', updateParallax, { passive: true });
 
-/* =========================================================
-   3. IDENTITY SLIDER (Đã tối ưu mượt mà)
-   ========================================================= */
-const track = document.getElementById('sliderTrack');
-const arrow = document.getElementById('sliderArrow');
-const dots = document.querySelectorAll('#sliderDots .dot');
-const btn = document.getElementById('identityBtn');
-const btnText = document.getElementById('identityBtnText');
+  /* =========================================================
+     3. IDENTITY SLIDER (Frame Avatar / Cover Facebook / Kỳ vọng & Cam kết)
+     ========================================================= */
+  const track = document.getElementById('sliderTrack');
+  const arrow = document.getElementById('sliderArrow');
+  const dots = document.querySelectorAll('#sliderDots .dot');
+  const btn = document.getElementById('identityBtn');
+  const btnText = document.getElementById('identityBtnText');
 
-const slideLabels = ['FRAME AVATAR', 'COVER FACEBOOK'];
-const slideLinks = [btn?.dataset.linkFrame || '#', btn?.dataset.linkCover || '#'];
+  const slideLabels = ['FRAME AVATAR', 'COVER FACEBOOK', 'KỲ VỌNG VÀ CAM KẾT'];
+  const slideLinks = [
+    btn?.dataset.linkFrame || '#',
+    btn?.dataset.linkCover || '#',
+    btn?.dataset.linkKyvong || '#'
+  ];
 
-let currentIndex = 0;
-const totalSlides = 2;
-let isAnimating = false; // Chống spam click liên tục gây giật
+  let currentIndex = 0;
+  const totalSlides = dots.length || slideLabels.length;
+  let isAnimating = false; // Chống spam click liên tục gây giật
 
-function goToSlide(index) {
-  if (isAnimating) return; // Nếu đang trượt thì bỏ qua click tiếp theo
-  isAnimating = true;
+  function goToSlide(index) {
+    if (isAnimating) return; // Nếu đang trượt thì bỏ qua click tiếp theo
+    isAnimating = true;
 
-  currentIndex = (index + totalSlides) % totalSlides;
+    currentIndex = (index + totalSlides) % totalSlides;
 
-  // 1. Dùng requestAnimationFrame để trượt mượt mà hơn
-  requestAnimationFrame(() => {
-    track.style.transform = `translateX(-${currentIndex * 50}%)`;
+    // 1. Dùng requestAnimationFrame để trượt mượt mà hơn
+    requestAnimationFrame(() => {
+      track.style.transform = `translateX(-${currentIndex * (100 / totalSlides)}%)`;
+    });
+
+    // 2. Cập nhật trạng thái các chấm Dots và Mũi tên
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('dot--active', i === currentIndex);
+    });
+    arrow.classList.toggle('is-prev', currentIndex === totalSlides - 1);
+
+    // 3. Fade out nút -> đổi chữ -> Fade in nút
+    btn.classList.add('is-fading');
+
+    setTimeout(() => {
+      btnText.textContent = slideLabels[currentIndex];
+      btn.href = slideLinks[currentIndex] || '#';
+      btn.classList.remove('is-fading');
+      isAnimating = false; // Mở lại cho phép click tiếp
+    }, 200); // 200ms khớp với thời gian transition opacity trong CSS
+  }
+
+  arrow.addEventListener('click', () => {
+    goToSlide(currentIndex + 1);
   });
 
-  // 2. Cập nhật trạng thái các chấm Dots và Mũi tên
-  dots.forEach((dot, i) => {
-    dot.classList.toggle('dot--active', i === currentIndex);
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      goToSlide(parseInt(dot.dataset.index, 10));
+    });
   });
-  arrow.classList.toggle('is-prev', currentIndex === totalSlides - 1);
-
-  // 3. Fade out nút -> đổi chữ -> Fade in nút
-  btn.classList.add('is-fading');
-  
-  setTimeout(() => {
-    btnText.textContent = slideLabels[currentIndex];
-    btn.href = slideLinks[currentIndex] || '#';
-    btn.classList.remove('is-fading');
-    isAnimating = false; // Mở lại cho phép click tiếp
-  }, 200); // 200ms khớp với thời gian transition opacity trong CSS
-}
-
-arrow.addEventListener('click', () => {
-  goToSlide(currentIndex + 1);
-});
-
-dots.forEach((dot) => {
-  dot.addEventListener('click', () => {
-    goToSlide(parseInt(dot.dataset.index, 10));
-  });
-});
 
   /* =========================================================
      4. SWIPE SUPPORT
